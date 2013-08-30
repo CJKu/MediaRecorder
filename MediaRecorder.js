@@ -1,6 +1,5 @@
 var mMediaStream;
 var mMediaStream2;
-//var mMediaRecorder;
 var mMediaRecorder2;
 var mBlob;
 var audioReplay = document.createElement('audio');
@@ -196,34 +195,42 @@ function dataAvaliableCallback(data) {
 }
 
 function stopCallback() {
+  // If the number of stopCallback is not equal to the number of stopRecording call
+  // test failed.
 }
+
 
 function errorCallback() {
-
+  // Test fail
 }
-/*
+
 function startRecording(time) {
-  //mBlob = null;
+  // Setup event handlers.
   mMediaRecorder.onstop = stopCallback;
   mMediaRecorder.ondataavailable = dataAvaliableCallback;
   mMediaRecorder.onerror = errorCallback;
+
+  // Start recording.
   mMediaRecorder.start(time);
-  //document.getElementById('status').value  = mMediaRecorder.state;
 }
     
 function stopRecording() {
   mRecorder.stop();
 }
 
-window.onload() {
+window.onload() = function() {
   navigator.mozGetUserMedia({audio:true},
-    function(s) {
-      mMediaStream = s;
-      mMediaRecorder = new MediaRecorder(mMediaStream);
+    function(stream) {
+      mMediaRecorder = new MediaRecorder(stream);
       startRecording(1000);
       stopRecording();
       startRecording(1000);
       stopRecording();
+      // We should recieve at last two on stop callback.
+      startRecording(1000);
     },
-    function(e) {dump(e)});
-};*/
+    function(error) {
+      dump(erro)
+    }
+  );
+}
