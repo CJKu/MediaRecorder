@@ -204,4 +204,5 @@ window.onload = function() {
   document.getElementById("Save").onclick = function() { Save(); };
   document.getElementById("Playback").onclick = function() { Playback(); };
   document.getElementById("PlaybackIDX").onclick = function() { PlaybackIDX(); };
+  gUM();
 };
