@@ -190,56 +190,40 @@ function Save() {
         }
 }
 /*
-window.onload = function() {
-  document.getElementById("Start").onclick = function() { Start(1000);};
-  document.getElementById("Start0").onclick = function() { Start(0);};
-  document.getElementById("Start0WithEvent").onclick = function() { Start0WithEvent();};
-  document.getElementById("Stop").onclick = function() { Stop(); };
-  document.getElementById("Stopms").onclick = function() { mMediaStream.stop(); };
-  document.getElementById("requestData").onclick = function() { mMediaRecorder.requestData(); };
-  document.getElementById("Resume").onclick = function() { Resume(); };
-  document.getElementById("Pause").onclick = function() { Pause(); };
-  document.getElementById("Save").onclick = function() { Save(); };
-  document.getElementById("Playback").onclick = function() { Playback(); };
-  document.getElementById("PlaybackIDX").onclick = function() { PlaybackIDX(); };
-  gUM();
-};*/
-
-
 var mMediaRecorder;
 
-    function dataAvaliableCallback(data) {
+function dataAvaliableCallback(data) {
       
-    }
+}
 
-    function stopCallback() {
-    }
+function stopCallback() {
+}
 
-    function errorCallback() {
+function errorCallback() {
 
-    }
-    function startRecording(time) {
-      //mBlob = null;
-      mMediaRecorder.onstop = stopCallback;
-      mMediaRecorder.ondataavailable = dataAvaliableCallback;
-      mMediaRecorder.onerror = errorCallback;
-      mMediaRecorder.start(time);
-      //document.getElementById('status').value  = mMediaRecorder.state;
-    }
+}
+function startRecording(time) {
+  //mBlob = null;
+  mMediaRecorder.onstop = stopCallback;
+  mMediaRecorder.ondataavailable = dataAvaliableCallback;
+  mMediaRecorder.onerror = errorCallback;
+  mMediaRecorder.start(time);
+  //document.getElementById('status').value  = mMediaRecorder.state;
+}
     
-    function stopRecording() {
-      mRecorder.stop();
-    }
+function stopRecording() {
+  mRecorder.stop();
+}
 
-    window.onload() {
-      navigator.mozGetUserMedia({audio:true},
-        function(s) {
-          mMediaStream = s;
-          mMediaRecorder = new MediaRecorder(mMediaStream);
-          startRecording(1000);
-          stopRecording();
-          startRecording(1000);
-          stopRecording();
-        },
-        function(e) {dump(e)});
-    };
+window.onload() {
+  navigator.mozGetUserMedia({audio:true},
+    function(s) {
+      mMediaStream = s;
+      mMediaRecorder = new MediaRecorder(mMediaStream);
+      startRecording(1000);
+      stopRecording();
+      startRecording(1000);
+      stopRecording();
+    },
+    function(e) {dump(e)});
+};*/
