@@ -189,19 +189,24 @@ function Save() {
         }
 }
 var mMediaRecorder;
+var mStopCount = 0;
 
 function dataAvaliableCallback(data) {
-      
+  document.getElementById('size').value  = "!!!!";
 }
 
 function stopCallback() {
   // If the number of stopCallback is not equal to the number of stopRecording call
   // test failed.
+  mStopCount++;
+
+  document.getElementById('status').value  =  "Stop : (" + mStopCount + ")"; 
 }
 
 
 function errorCallback() {
   // Test fail
+  document.getElementById('status').value  =  "Error"; 
 }
 
 function startRecording(time) {
@@ -215,22 +220,27 @@ function startRecording(time) {
 }
     
 function stopRecording() {
-  mRecorder.stop();
+  //mRecorder.stop();
 }
 
-window.onload() = function() {
+function StopClick() {
+  mMediaRecorder.stop();
+}
+
+window.onload = function() {
+  document.getElementById("Stop").onclick = function() { StopClick(); };
   navigator.mozGetUserMedia({audio:true},
-    function(stream) {
-      mMediaRecorder = new MediaRecorder(stream);
+    function(s) {
+      mMediaRecorder = new MediaRecorder(s);
       startRecording(1000);
-      stopRecording();
-      startRecording(1000);
-      stopRecording();
+      //stopRecording();
+      //startRecording(1000);
+      //stopRecording();
       // We should recieve at last two on stop callback.
-      startRecording(1000);
+      //startRecording(1000);
     },
-    function(error) {
-      dump(erro)
+    function(e) {
+      dump(e);
     }
   );
-}
+};
