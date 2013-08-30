@@ -10,6 +10,10 @@ function gUM() {
                        function(s) {
                          mMediaStream = s;
                          document.getElementById('mediastream').value  = mMediaStream;
+                         Start(1000);
+                         Stop();
+                         Start(1000);
+                         Stop();
                        },
                        function(e) {dump(e)});
 }
