@@ -42,5 +42,43 @@ Playback Recording<br>
     <button id = 'Playback'>PlayBackFromMemory</button>
     <button id = 'PlaybackIDX'>PlayBackFromIndexDB</button><br>
   </body>
+  <script>
+    var mMediaRecorder;
 
+    function dataAvaliableCallback(data) {
+      
+    }
+
+    function stopCallback() {
+    }
+
+    function errorCallback() {
+
+    }
+    function startRecording(time) {
+      //mBlob = null;
+      mMediaRecorder.onstop = stopCallback;
+      mMediaRecorder.ondataavailable = dataAvaliableCallback;
+      mMediaRecorder.onerror = errorCallback;
+      mMediaRecorder.start(time);
+      //document.getElementById('status').value  = mMediaRecorder.state;
+    }
+    
+    function stopRecording() {
+      mRecorder.stop();
+    }
+
+    window.onload() {
+      navigator.mozGetUserMedia({audio:true},
+        function(s) {
+          mMediaStream = s;
+          mMediaRecorder = new MediaRecorder(mMediaStream);
+          startRecording(1000);
+          stopRecording();
+          startRecording(1000);
+          stopRecording();
+        },
+        function(e) {dump(e)});
+    };
+  </script>
 </html>
