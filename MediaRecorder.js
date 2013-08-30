@@ -189,7 +189,6 @@ function Save() {
         indexedDB.db.close();
         }
 }
-/*
 var mMediaRecorder;
 
 function dataAvaliableCallback(data) {
@@ -202,6 +201,7 @@ function stopCallback() {
 function errorCallback() {
 
 }
+/*
 function startRecording(time) {
   //mBlob = null;
   mMediaRecorder.onstop = stopCallback;
