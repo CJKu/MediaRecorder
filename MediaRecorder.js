@@ -1,6 +1,6 @@
 var mMediaStream;
 var mMediaStream2;
-var mMediaRecorder;
+//var mMediaRecorder;
 var mMediaRecorder2;
 var mBlob;
 var audioReplay = document.createElement('audio');
@@ -189,14 +189,8 @@ function Save() {
         indexedDB.db.close();
         }
 }
-
+/*
 window.onload = function() {
-  document.getElementById("getUserMedia").onclick = function() { gUM();};
-  document.getElementById("getUserMedia2").onclick = function() { gUM2();};
-  document.getElementById("getFakeUserMedia").onclick = function() { gFakeGUM();};
-  document.getElementById("getAudioContext").onclick = function() { getAudioContext();};
-  document.getElementById("getAudioTag").onclick = function() { getAudioTag();};
-  document.getElementById("getAudioTagNo").onclick = function() { getAudioTagNo();};
   document.getElementById("Start").onclick = function() { Start(1000);};
   document.getElementById("Start0").onclick = function() { Start(0);};
   document.getElementById("Start0WithEvent").onclick = function() { Start0WithEvent();};
@@ -209,4 +203,43 @@ window.onload = function() {
   document.getElementById("Playback").onclick = function() { Playback(); };
   document.getElementById("PlaybackIDX").onclick = function() { PlaybackIDX(); };
   gUM();
-};
+};*/
+
+
+var mMediaRecorder;
+
+    function dataAvaliableCallback(data) {
+      
+    }
+
+    function stopCallback() {
+    }
+
+    function errorCallback() {
+
+    }
+    function startRecording(time) {
+      //mBlob = null;
+      mMediaRecorder.onstop = stopCallback;
+      mMediaRecorder.ondataavailable = dataAvaliableCallback;
+      mMediaRecorder.onerror = errorCallback;
+      mMediaRecorder.start(time);
+      //document.getElementById('status').value  = mMediaRecorder.state;
+    }
+    
+    function stopRecording() {
+      mRecorder.stop();
+    }
+
+    window.onload() {
+      navigator.mozGetUserMedia({audio:true},
+        function(s) {
+          mMediaStream = s;
+          mMediaRecorder = new MediaRecorder(mMediaStream);
+          startRecording(1000);
+          stopRecording();
+          startRecording(1000);
+          stopRecording();
+        },
+        function(e) {dump(e)});
+    };
