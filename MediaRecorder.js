@@ -229,11 +229,11 @@ function StopClick() {
 }
 
 window.onload = function() {
-  document.getElementById("Stop").onclick = function() { stopRecording(); };
-  document.getElementById("Start").onclick = function() { startRecording(1000);};
+  document.getElementById("Start").onclick = function() { startRecording(1000); };
+  document.getElementById("Stop").onclick = function() { StopClick(); };
   document.getElementById('status').value  =  "(0)";
   document.getElementById("Playback").onclick = function() { Playback(); };
-  navigator.mozGetUserMedia({audio:true},
+  navigator.mozGetUserMedia({audio:true, fake:true},
     function(s) {
       mMediaRecorder = new MediaRecorder(s);
       startRecording(1000);
