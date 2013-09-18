@@ -192,7 +192,8 @@ var mMediaRecorder;
 var mStopCount = 0;
 
 function dataAvaliableCallback(data) {
-  document.getElementById('size').value  = "!!!!";
+  mBlob = new Blob([mBlob, aData.data], {type: 'audio/ogg'});
+  document.getElementById('size').value  = mBlob.size;
 }
 
 function stopCallback() {
@@ -200,7 +201,7 @@ function stopCallback() {
   // test failed.
   mStopCount++;
 
-  document.getElementById('status').value  =  "Stop : (" + mStopCount + ")"; 
+  document.getElementById('status').value  =  "(" + mStopCount + ")"; 
 }
 
 
@@ -218,17 +219,25 @@ function startRecording(time) {
   // Start recording.
   mMediaRecorder.start(time);
 }
-    
+
 function stopRecording() {
+  mMediaRecorder.stop();
+}
+
+function StopClick() {
   mMediaRecorder.stop();
 }
 
 window.onload = function() {
   document.getElementById("Stop").onclick = function() { stopRecording(); };
   document.getElementById("Start").onclick = function() { startRecording(1000);};
+  document.getElementById('status').value  =  "(0)";
+  document.getElementById("Playback").onclick = function() { Playback(); };
   navigator.mozGetUserMedia({audio:true},
     function(s) {
       mMediaRecorder = new MediaRecorder(s);
+      startRecording(1000);
+      stopRecording();
       startRecording(1000);
       stopRecording();
       startRecording(1000);
