@@ -200,7 +200,7 @@ function stopCallback() {
   // test failed.
   mStopCount++;
 
-  document.getElementById('status').value  =  "Stop : (" + mStopCount + ")"; 
+  document.getElementById('status').value  =  "(" + mStopCount + ")"; 
 }
 
 
