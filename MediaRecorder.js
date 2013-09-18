@@ -215,7 +215,7 @@ function startRecording(time) {
   mMediaRecorder.onstop = stopCallback;
   mMediaRecorder.ondataavailable = dataAvaliableCallback;
   mMediaRecorder.onerror = errorCallback;
-
+  mBloc = null;
   // Start recording.
   mMediaRecorder.start(time);
 }
