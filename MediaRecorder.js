@@ -220,7 +220,7 @@ function startRecording(time) {
 }
     
 function stopRecording() {
-  //mRecorder.stop();
+  mMediaRecorder.stop();
 }
 
 function StopClick() {
@@ -228,14 +228,15 @@ function StopClick() {
 }
 
 window.onload = function() {
+  document.getElementById("Start").onclick = function() { startRecording(1000); };
   document.getElementById("Stop").onclick = function() { StopClick(); };
-  navigator.mozGetUserMedia({audio:true},
+  navigator.mozGetUserMedia({audio:true, fake:true},
     function(s) {
       mMediaRecorder = new MediaRecorder(s);
       startRecording(1000);
-      //stopRecording();
-      //startRecording(1000);
-      //stopRecording();
+      stopRecording();
+      startRecording(1000);
+      stopRecording();
       // We should recieve at last two on stop callback.
       //startRecording(1000);
     },
