@@ -237,6 +237,8 @@ window.onload = function() {
       stopRecording();
       startRecording(1000);
       stopRecording();
+      startRecording(1000);
+      stopRecording();
       // We should recieve at last two on stop callback.
       //startRecording(1000);
     },
