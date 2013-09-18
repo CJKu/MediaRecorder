@@ -191,7 +191,7 @@ function Save() {
 var mMediaRecorder;
 var mStopCount = 0;
 
-function dataAvaliableCallback(data) {
+function dataAvaliableCallback(aData) {
   mBlob = new Blob([mBlob, aData.data], {type: 'audio/ogg'});
   document.getElementById('size').value  = mBlob.size;
 }
