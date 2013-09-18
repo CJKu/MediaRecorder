@@ -220,22 +220,19 @@ function startRecording(time) {
 }
     
 function stopRecording() {
-  //mRecorder.stop();
-}
-
-function StopClick() {
   mMediaRecorder.stop();
 }
 
 window.onload = function() {
-  document.getElementById("Stop").onclick = function() { StopClick(); };
+  document.getElementById("Stop").onclick = function() { stopRecording(); };
+  document.getElementById("Start").onclick = function() { startRecording(1000);};
   navigator.mozGetUserMedia({audio:true},
     function(s) {
       mMediaRecorder = new MediaRecorder(s);
       startRecording(1000);
-      //stopRecording();
-      //startRecording(1000);
-      //stopRecording();
+      stopRecording();
+      startRecording(1000);
+      stopRecording();
       // We should recieve at last two on stop callback.
       //startRecording(1000);
     },
