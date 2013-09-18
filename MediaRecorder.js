@@ -211,11 +211,11 @@ function errorCallback() {
 }
 
 function startRecording(time) {
+  mBlob = null;
   // Setup event handlers.
   mMediaRecorder.onstop = stopCallback;
   mMediaRecorder.ondataavailable = dataAvaliableCallback;
   mMediaRecorder.onerror = errorCallback;
-  mBlob = null;
   // Start recording.
   mMediaRecorder.start(time);
 }
