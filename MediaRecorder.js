@@ -233,7 +233,7 @@ window.onload = function() {
   document.getElementById("Stop").onclick = function() { StopClick(); };
   document.getElementById('status').value  =  "(0)";
   document.getElementById("Playback").onclick = function() { Playback(); };
-  navigator.mozGetUserMedia({audio:true, fake:true},
+  navigator.mozGetUserMedia({audio:true},
     function(s) {
       mMediaRecorder = new MediaRecorder(s);
       startRecording(1000);
